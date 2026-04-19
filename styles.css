@@ -183,9 +183,7 @@ section {
     font-size: 16px;
   }
 
-  img {
-    height: 32px;
-  }
+  
 }
 
 /* COMPANY TITLE */
@@ -203,17 +201,7 @@ section {
   color: #c8ff00; /* your neon green */
 }
 
-/* MOBILE VIEW */
 
-@media (max-width: 768px) {
-  .company-title {
-    font-size: 20px;
-  }
-
-  #heroTitle {
-    font-size: 32px;
-  }
-}
 
 
 
