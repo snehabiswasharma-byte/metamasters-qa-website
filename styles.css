@@ -158,9 +158,9 @@ section {
 
 
 /* NAV LOGO */
-.nav-logo {
-  width: 38px;
-  height: 38px;
+.nav-WebsiteLogo {
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 
   /* subtle glow to match theme */
@@ -226,6 +226,7 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 
   opacity: 0;
   transition: opacity 1s ease-in-out;
@@ -281,6 +282,7 @@ section {
   background: linear-gradient(120deg, transparent, rgba(200,255,0,0.2), transparent);
   opacity: 0;
   transition: 0.5s;
+  pointer-events: none;
 }
 
 .service-card:hover::before {
@@ -294,7 +296,15 @@ section {
 }
 
 .explore {
-  margin-top: auto;
+  position: relative;
+  z-index: 10;   
+  color: #c8ff00;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: 0.3s;
 }
 
 
@@ -423,6 +433,275 @@ section {
   align-items: center;
   justify-content: center;
 }
+
+
+
+
+
+
+
+
+
+/* PROJECT SECTION */
+
+
+.projects-section {
+  padding: 80px 20px;
+  overflow: hidden;
+}
+
+/* SCROLL AREA */
+.project-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 0 20px 10px;
+
+  scroll-snap-type: x mandatory;
+}
+
+.project-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* CARD */
+.project-card {
+  min-width: 200px;
+  height: 260px;
+
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+
+  flex-shrink: 0;
+  scroll-snap-align: center;
+
+  transition: 0.4s;
+}
+
+/* IMAGE */
+.project-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+/* OVERLAY */
+.project-card {
+  min-width: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0a0f1f;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  transition: 0.4s;
+}
+
+/* IMAGE */
+.project-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+/* TEXT AREA BELOW IMAGE */
+.project-info {
+  /* background: #05070f; */
+  padding: 12px;
+}
+
+/* TITLE */
+.project-info h3 {
+  color: #c8ff00;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+/* BUTTONS */
+.store-links {
+  display: flex;
+  gap: 8px;
+}
+
+.store-links a {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+
+  background: rgba(200,255,0,0.1);
+  color: #c8ff00;
+
+  border: 1px solid rgba(200,255,0,0.3);
+  transition: 0.3s;
+}
+
+.store-links a:hover {
+  background: #c8ff00;
+  color: black;
+}
+
+/* HOVER */
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px rgba(200,255,0,0.2);
+}
+
+.overlay h3 {
+  color: #c8ff00;
+  font-size: 18px;
+}
+
+.overlay p {
+  font-size: 13px;
+  color: #ccc;
+}
+
+/* HOVER EFFECT */
+.project-card:hover img {
+  transform: scale(1.1);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(200,255,0,0.2);
+}
+
+
+/* PLAY STORE APP STORE LINK */
+.store-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.store-links a {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+
+  background: rgba(200,255,0,0.1);
+  color: #c8ff00;
+
+  border: 1px solid rgba(200,255,0,0.3);
+  transition: 0.3s;
+}
+
+/* scroll code */
+.store-links a:hover {
+  background: #c8ff00;
+  color: black;
+}
+
+.project-scroll {
+  scroll-behavior: smooth;
+  cursor: grab;
+}
+
+.project-scroll.active {
+  cursor: grabbing;
+}
+
+/* Momentum scrolling on mobile */
+.project-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+/* 
+FADE EDGE EFFECT
+.projects-section {
+  position: relative;
+}
+
+LEFT FADE */
+/* .projects-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+
+  background: linear-gradient(to right, #000, transparent);
+} */
+
+/* RIGHT FADE
+.projects-section::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+
+  background: linear-gradient(to left, #000, transparent);
+} */
+
+
+
+
+/* WRAPPER */
+.project-wrapper {
+  position: relative;
+}
+
+/* ARROWS */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+
+  background: rgba(0,0,0,0.6);
+  color: #c8ff00;
+
+  border: 1px solid rgba(200,255,0,0.3);
+  font-size: 20px;
+
+  cursor: pointer;
+  z-index: 10;
+
+  transition: 0.3s;
+}
+
+/* POSITION */
+.scroll-btn.left {
+  left: 10px;
+}
+
+.scroll-btn.right {
+  right: 10px;
+}
+
+/* HOVER */
+.scroll-btn:hover {
+  background: #c8ff00;
+  color: black;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* HIDE ON MOBILE (optional but recommended) */
+/* @media (max-width: 768px) {
+  .scroll-btn {
+    display: none;
+  }
+} */
+
+
+
+
+
+
 
 
 
@@ -671,6 +950,15 @@ section {
 
 
 
+
+
+
+
+
+
+
+
+
 /* 
 FOUNDER DETAILS */
 /* FOUNDER DETAILS - MATCHED WITH SITE THEME */
@@ -785,6 +1073,139 @@ FOUNDER DETAILS */
 }
 
 
+/* FOUNDER MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .founder-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .founder-left img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 12px;
+  }
+
+  .founder-right h4 {
+    font-size: 18px;
+  }
+
+  .founder-right p {
+    font-size: 13px;
+  }
+}
+
+
+
+
+
+
+
+/* SUPER GAMING SECTION */
+.super-gaming {
+  margin: 60px auto;
+  display: flex;
+  gap: 24px;
+  max-width: 900px;
+
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 16px;
+
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+/* SAME HOVER AS FOUNDER CARD */
+.super-gaming:hover {
+  transform: translateY(-6px);
+  border-color: #c8ff00;
+  box-shadow: 0 0 20px rgba(200,255,0,0.2);
+}
+
+/* SAME GLOW SWEEP EFFECT */
+.super-gaming::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(200,255,0,0.15),
+    transparent
+  );
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.super-gaming:hover::before {
+  opacity: 1;
+}
+
+/* IMAGE */
+.super-gaming-left img {
+  width: 110px;
+  height: 110px;
+  border-radius: 12px;
+  object-fit: cover;
+
+  border: 1px solid #c8ff00;
+  background: #000;
+}
+
+/* TEXT */
+.super-gaming-right h3 {
+  color: #c8ff00;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.super-gaming-right h4 {
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.super-gaming-right p {
+  color: #9ca3af;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .super-gaming {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .super-gaming-left img {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 12px;
+  }
+
+  .super-gaming-right h4 {
+    font-size: 18px;
+  }
+
+  .super-gaming-right p {
+    font-size: 13px;
+  }
+}
+
+
+
+
+
+
 
 
 
@@ -802,6 +1223,16 @@ FOUNDER DETAILS */
   opacity: 0.7;
   margin: 40px 0;
 }
+
+
+
+
+
+
+
+
+
+
 
 /*footer*/
 
@@ -954,3 +1385,23 @@ FOUNDER DETAILS */
   font-weight: 600;
   letter-spacing: 0.5px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Floating glow animation */
+@keyframes floatGlow {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+

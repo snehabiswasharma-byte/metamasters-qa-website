@@ -109,10 +109,194 @@ window.onload = () => {
 
 //FOR CLOSING LINKS
 
+
+const menu = document.getElementById("mobileMenu");
+
 document.querySelectorAll("#mobileMenu a").forEach(link => {
   link.addEventListener("click", () => {
     menu.classList.add("hidden");
   });
 });
+
+
+
+
+
+
+//SERVICE CARD GLOW
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".fade-up").forEach(el => {
+  observer.observe(el);
+});
+
+
+
+
+
+
+
+// PROJECT SECTION
+
+const scrollContainer = document.querySelector(".project-scroll");
+
+if (scrollContainer) {
+  // ALL your project scroll code goes inside here
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  scrollContainer.addEventListener("mousedown", (e) => {
+    isDown = true;
+    scrollContainer.classList.add("active");
+    startX = e.pageX - scrollContainer.offsetLeft;
+    scrollLeft = scrollContainer.scrollLeft;
+  });
+
+  scrollContainer.addEventListener("mouseleave", () => {
+    isDown = false;
+  });
+
+  scrollContainer.addEventListener("mouseup", () => {
+    isDown = false;
+  });
+
+  scrollContainer.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+
+    const x = e.pageX - scrollContainer.offsetLeft;
+    const walk = (x - startX) * 1.5;
+
+    scrollContainer.scrollLeft = scrollLeft - walk;
+  });
+}
+
+let autoScrollSpeed = 0.5;
+let userVelocity = 0;
+let scrollPos = 0;
+
+// AUTO SCROLL LOOP
+function autoScroll() {
+
+  // base slow movement
+  scrollPos += autoScrollSpeed;
+
+  // add user momentum
+  scrollPos += userVelocity;
+
+  // apply scroll
+  scrollContainer.scrollLeft = scrollPos;
+
+  // smooth slowdown (friction)
+  userVelocity *= 0.92;
+
+  // reset loop
+  if (scrollPos >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+    scrollPos = 0;
+  }
+
+  requestAnimationFrame(autoScroll);
+}
+
+// ===== USER INTERACTION DETECTION =====
+
+// Mouse hover = pause
+scrollContainer.addEventListener("mouseenter", () => {
+  isUserInteracting = true;
+});
+
+scrollContainer.addEventListener("mouseleave", () => {
+  isUserInteracting = false;
+});
+
+// Touch (mobile)
+scrollContainer.addEventListener("touchstart", () => {
+  isUserInteracting = true;
+});
+
+scrollContainer.addEventListener("touchend", () => {
+  isUserInteracting = false;
+});
+
+// Manual scroll (wheel / drag)
+scrollContainer.addEventListener("wheel", () => {
+  isUserInteracting = true;
+
+  setTimeout(() => {
+    isUserInteracting = false;
+  }, 1000);
+});
+
+
+
+// DRAG CODE HERE
+let isDown = false;
+let startX;
+let scrollLeft;
+
+scrollContainer.addEventListener("mousedown", (e) => {
+  isDown = true;
+  scrollContainer.classList.add("active");
+  startX = e.pageX - scrollContainer.offsetLeft;
+  scrollLeft = scrollContainer.scrollLeft;
+});
+
+scrollContainer.addEventListener("mouseleave", () => {
+  isDown = false;
+});
+
+scrollContainer.addEventListener("mouseup", () => {
+  isDown = false;
+});
+
+scrollContainer.addEventListener("mousemove", (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+
+  const x = e.pageX - scrollContainer.offsetLeft;
+  const walk = (x - startX) * 1.5;
+
+  scrollContainer.scrollLeft = scrollLeft - walk;
+});
+
+
+
+
+
+
+
+// Scroll to the PROJECT SECTION part
+const leftBtn = document.getElementById("scrollLeft");
+const rightBtn = document.getElementById("scrollRight");
+
+if (leftBtn && rightBtn && scrollContainer) {
+  leftBtn.addEventListener("click", () => {
+    scrollContainer.scrollBy({
+      left: -300,
+      behavior: "smooth"
+    });
+  });
+
+  rightBtn.addEventListener("click", () => {
+    scrollContainer.scrollBy({
+      left: 300,
+      behavior: "smooth"
+    });
+  });
+}
+
+
+
+
+
+
 
 lucide.createIcons();
